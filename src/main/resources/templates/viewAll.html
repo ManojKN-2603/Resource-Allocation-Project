@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Resource List</title>
+	<style>
+		body {
+			font-family: Arial, sans-serif;
+			margin: 0;
+			padding: 20px;
+			background-color: #f9f9f9;
+		}
+
+		h1 {
+			text-align: center;
+			color: #4a90e2;
+			margin-bottom: 20px;
+		}
+
+		.message {
+			text-align: center;
+			margin-bottom: 15px;
+			font-size: 16px;
+			color: greenyellow
+		}
+
+
+		table {
+			width: 100%;
+			background: #fff;
+			border-radius: 8px;
+			overflow: hidden;
+		}
+
+		th,
+		td {
+			padding: 12px;
+			text-align: left;
+			font-size: 14px;
+			border-bottom: 1px solid #ddd;
+		}
+
+		th {
+			background-color: #4a90e2;
+			color: white;
+			text-transform: uppercase;
+		}
+
+		tr:nth-child(even) {
+			background-color: #f4f4f9;
+		}
+
+
+		button {
+			padding: 5px 10px;
+			border: none;
+			border-radius: 4px;
+			background-color: #4a90e2;
+			color: white;
+			font-size: 15px;
+		}
+	</style>
+</head>
+
+<body>
+	<h1>Resource List</h1>
+
+	<!-- Session messages -->
+	<div class="message" th:if="${session.success}" th:text="${session.success}"></div>
+	<th:block th:text="${@sessionMessageRemover.removeMessage()}"></th:block>
+
+	<table>
+		<thead>
+			<tr>
+				<th>Resource ID</th>
+				<th>Resource Name</th>
+				<th>Skills</th>
+				<th>Experience</th>
+				<th>Edit</th>
+				<th>Delete</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr th:each="resource : ${session.resources}">
+				<td th:text="${resource.resourceId}"></td>
+				<td th:text="${resource.resourceName}"></td>
+				<td th:text="${resource.skills}"></td>
+				<td th:text="${resource.experience}"></td>
+				<td><a th:href="'/edit/' + ${resource.resourceId}"><button>Edit</button></a></td>
+				<td><a th:href="'/delete/' + ${resource.resourceId}"><button>Delete</button></a></td>
+			</tr>
+		</tbody>
+	</table>
+</body>
+
+</html>

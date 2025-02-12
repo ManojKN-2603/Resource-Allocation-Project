@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Add Resource Details</title>
+	<style>
+		body {
+			font-family: Arial, sans-serif;
+			margin: 0;
+			padding: 0;
+			display: flex;
+			background-color: #f9f9f9;
+			justify-content: center;
+			align-items: center;
+			height: 100vh;
+		}
+
+		.form-container {
+			width: 400px;
+		}
+
+		h1 {
+			font-size: 30px;
+			margin-bottom: 20px;
+			color: #4a90e2;
+			text-align: center;
+		}
+
+		form {
+			display: flex;
+			flex-direction: column;
+			gap: 15px;
+		}
+
+		label {
+			font-size: 16px;
+			margin-bottom: 10px;
+		}
+
+		input,
+		textarea,
+		button {
+			font-size: 16px;
+			padding: 10px;
+			border: 1px solid grey;
+			border-radius: 5px;
+			width: 400px;
+		}
+
+		button {
+			background-color: #4a90e2;
+			color: white;
+			border: none;
+			width: 425px;
+		}
+	</style>
+</head>
+
+<body>
+	<div class="form-container">
+		<h1>Add Resource Details</h1>
+		<form method="post" action="/addDetails">
+			<label for="resourceName">Resource Name:</label>
+			<input type="text" id="resourceName" name="resourceName" placeholder="Enter resource name" required>
+
+			<label for="skills">Skills:</label>
+			<textarea id="skills" name="skills" rows="4" placeholder="Enter skills (e.g., Java, Python)"
+				required></textarea>
+
+			<label for="experience">Experience (Years):</label>
+			<input type="number" id="experience" name="experience" placeholder="Enter experience in years" min="0"
+				required>
+
+			<button type="submit">Add</button>
+		</form>
+	</div>
+</body>
+
+</html>
