@@ -25,6 +25,6 @@ public interface ResourceService {
 
 	String searchBS(ArrayList<String> skills, HttpSession session);
 
-	String search(String skills, int experience, HttpSession session);
+	String search(ArrayList<String> skills, int experience, HttpSession session);
 
 }

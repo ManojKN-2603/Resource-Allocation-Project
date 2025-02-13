@@ -83,8 +83,7 @@ public class ResourceServiceImpl implements ResourceService {
 				.filter(resource -> resource.getSkills().stream().map(String::toLowerCase).collect(Collectors.toList())
 						.containsAll(skills.stream().map(String::toLowerCase).collect(Collectors.toList())))
 				.map(resource -> resource.getResourceName()).collect(Collectors.toList());
-		if (resources.isEmpty())
-		{
+		if (resources.isEmpty()) {
 			session.setAttribute("failure", "Resource Not Found");
 			return "redirect:/";
 		} else {
@@ -95,11 +94,12 @@ public class ResourceServiceImpl implements ResourceService {
 	}
 
 	@Override
-	public String search(String skills, int experience, HttpSession session) {
+	public String search(ArrayList<String> skills, int experience, HttpSession session) {
 		List<String> resources = repository.findAll().stream()
 				.filter(resource -> resource.getExperience() <= experience)
-				.filter(resource -> resource.getSkills().contains(skills)).map(resource -> resource.getResourceName())
-				.collect(Collectors.toList());
+				.filter(resource -> resource.getSkills().stream().map(String::toLowerCase).collect(Collectors.toList())
+						.containsAll(skills.stream().map(String::toLowerCase).collect(Collectors.toList())))
+				.map(resource -> resource.getResourceName()).collect(Collectors.toList());
 		if (resources.isEmpty()) {
 			session.setAttribute("failure", "Resource Not Found");
 			return "redirect:/";

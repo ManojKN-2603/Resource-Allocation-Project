@@ -48,8 +48,8 @@ public class ResourceController {
 	}
 
 	@PostMapping("/editResource")
-	public String editProducts(ResourceDto resourceDto,HttpSession session) {
-		return service.editProducts(resourceDto,session);
+	public String editProducts(ResourceDto resourceDto, HttpSession session) {
+		return service.editProducts(resourceDto, session);
 	}
 
 	@GetMapping("/delete/{resourceId}")
@@ -68,7 +68,7 @@ public class ResourceController {
 	}
 
 	@GetMapping("/searchBSAE")
-	public String search(@RequestParam("skills") String skills, @RequestParam("experience") int experience,
+	public String search(@RequestParam("skills") ArrayList<String> skills, @RequestParam("experience") int experience,
 			HttpSession session) {
 		return service.search(skills, experience, session);
 	}
